@@ -138,8 +138,13 @@ if has('unix')
     endfunction
   endif
 else
-  call s:log ('Windows detected, erroring out')
-  call s:err('Codi does not support Windows yet.')
+  if executable('script')
+    function! s:scriptify(bin)
+      return 'script -qfec '.shellescape(a:bin, 1).' /dev/null'
+    endfunction
+  else
+    call s:err('Codi does not support Windows without Cygwin yet.')
+  endif
 endif
 
 " Actions on codi
