@@ -140,7 +140,7 @@ if has('unix')
 else
   if executable('script')
     function! s:scriptify(bin)
-      return 'script -qfec '.shellescape(a:bin, 1).' /dev/null'
+      return ['script', '-qfec', shellescape(a:bin, 1), '/dev/null']
     endfunction
   else
     call s:err('Codi does not support Windows without Cygwin yet.')
