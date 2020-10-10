@@ -404,7 +404,13 @@ function! s:codi_do_update()
   endif
 
   " Build the command
-  let cmd = g:codi#command_prefix + s:to_list(i['bin'])
+  
+  
+  if has("win32")
+    let cmd = s:to_list(i['bin'])
+  else
+    let cmd = g:codi#command_prefix + s:to_list(i['bin'])
+  endif
 
   " The purpose of this is to make the REPL start from the buffer directory
   let opt_use_buffer_dir = s:get_opt('use_buffer_dir')
