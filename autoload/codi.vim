@@ -434,10 +434,17 @@ function! s:codi_do_update()
       let job = jobstart(cmd, job_options)
       let id = job
     else
-      let job = job_start(s:scriptify(cmd), { 
-            \ 'callback': 'codi#__vim_callback', 
-            \ 'env': {'SHELL': 'sh'}
-            \})
+      if has("win32")
+              let job = job_start(s:scriptify(cmd), { 
+              \ 'callback': 'codi#__vim_callback'
+              \})
+      else
+                let job = job_start(s:scriptify(cmd), { 
+              \ 'callback': 'codi#__vim_callback', 
+              \ 'env': {'SHELL': 'sh'}
+              \})
+      endif
+
       let ch = job_getchannel(job)
       let id = s:ch_get_id(ch)
     endif
