@@ -141,12 +141,12 @@ else
   if executable('script')
     function! s:scriptify(bin)
       " We need to make bin one string argument
-      let tmp_bin = 'C:\\Users\\Tate\\temp\\cmd'
+      let tmp_bin = '/tmp/cmd'
       call writefile([s:shellescape_list(a:bin)], tmp_bin)
       return ['wsl','script', '-qfec', tmp_bin, '/dev/null']
     endfunction
   else
-    call s:err('Codi does not support Windows without Cygwin yet.')
+    call s:err('Codi does not support Windows without WSL/Cygwin yet.')
   endif
 endif
 
