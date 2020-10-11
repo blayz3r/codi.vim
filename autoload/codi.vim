@@ -143,7 +143,7 @@ else
       " We need to make bin one string argument
       let tmp_bin = 'C:\\Users\\Tate\\temp\\cmd'
       call writefile([s:shellescape_list(a:bin)], tmp_bin)
-      return ['script', '-qfec', tmp_bin, '/dev/null']
+      return ['wsl','script', '-qfec', tmp_bin, '/dev/null']
     endfunction
   else
     call s:err('Codi does not support Windows without Cygwin yet.')
