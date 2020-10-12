@@ -123,7 +123,7 @@ let s:codi_default_interpreters = {
           \ 'rephrase': function('s:rp_py'),
           \ },
       \ 'javascript': {
-          \ 'bin': ['node', '-e', 'require("repl").start({ignoreUndefined: true, useGlobal: true})'],
+          \ 'bin': ['node'],
           \ 'prompt': '^\(>\|\.\.\.\+\) ',
           \ },
       \ 'typescript': {
