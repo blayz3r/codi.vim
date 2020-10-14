@@ -140,9 +140,11 @@ if has('unix')
 else
   if executable('script')
     function! s:scriptify(bin)
-      " We need to make bin one string argument
-      let tmp_bin = 'C:\\Users\\Tate\\temp\\cmd'
-       return ['wsl','script', '-qfec', a:bin[-1], '/dev/null']
+      let win32_bin = 'C:\\Users\\Tate\\temp\\cmd'
+      let tmp_bin = '/mnt/c/Users/Tate/temp/cmd'
+      call writefile([s:shellescape_list(a:bin)], win32_bin)
+      call setfperm(tmp_bin, 'rwx------')
+       return ['wsl', 'script', '-qfec', tmp_bin, '/dev/null']
     endfunction
   else
     call s:err('Codi does not support Windows without WSL/Cygwin yet.')
