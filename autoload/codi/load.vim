@@ -157,7 +157,7 @@ let s:codi_default_interpreters = {
           \ 'preprocess': function('s:pp_ml'),
           \ },
       \ 'r': {
-          \ 'bin': ['R', '--no-save'],
+          \ 'bin': ['R', '--vanilla', '--slave'],
           \ 'prompt': '^> ',
           \ 'preprocess': function('s:pp_r'),
           \ },
