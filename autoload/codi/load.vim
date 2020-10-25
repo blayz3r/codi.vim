@@ -158,7 +158,7 @@ let s:codi_default_interpreters = {
           \ },
       \ 'r': {
           \ 'bin': ['R', '--vanilla'],
-          \ 'prompt': '^> ',
+          \ 'prompt': '^\(>\|+\) ',
           \ 'preprocess': function('s:pp_r'),
           \ },
       \ 'clojure': {
